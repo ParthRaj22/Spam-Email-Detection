@@ -54,3 +54,12 @@ summary(pred)
 table(Predicted = pred$class, Actual = valid.df$Spam)
 mean(pred$class==valid.df$Spam)
 
+#gain
+gain <- gains(valid.df$Spam, pred$posterior[,2], groups = 10)
+gain
+names(gain)
+
+#lift chart
+plot(c(0,gain$cume.pct.of.total*sum(valid.df$Spam))~c(0,gain$cume.obs), 
+     xlab = "# cases", ylab = "Cumulative", main = "", type = "l")
+lines(c(0,sum(valid.df$Spam))~c(0, dim(valid.df)[1]), lty = 5)
