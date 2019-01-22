@@ -71,3 +71,11 @@ midpoints <- barplot(heights, names.arg = gain$depth,  ylim = c(0,9), col = "blu
                      xlab = "Percentile", ylab = "Decile lift", 
                      main = "Decile-chart")
 text(midpoints, heights+0.5, labels=round(heights, 1), cex = 0.8)
+
+
+# As per the confusion matrix, lift chart and Decile chart, we can conclude that the model is effective 
+#in identifying spams and non spams 83% of the times. 
+#Also, Lift has sufficiently good area under its curve compared to the naive rule line. 
+#Even though the first decile is lower than the second decile, the chart seems to follow an ideal trend from second 
+#decile onwards. First 5 deciles of the chart covers 90% of the variation. 
+#Hence, we can conclude from the above parameters that the model is good in identifying spams. 
