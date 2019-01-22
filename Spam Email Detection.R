@@ -63,3 +63,11 @@ names(gain)
 plot(c(0,gain$cume.pct.of.total*sum(valid.df$Spam))~c(0,gain$cume.obs), 
      xlab = "# cases", ylab = "Cumulative", main = "", type = "l")
 lines(c(0,sum(valid.df$Spam))~c(0, dim(valid.df)[1]), lty = 5)
+
+
+#decile chart and values
+heights <- gain$mean.resp/mean(valid.df$Spam)
+midpoints <- barplot(heights, names.arg = gain$depth,  ylim = c(0,9), col = "blue",  
+                     xlab = "Percentile", ylab = "Decile lift", 
+                     main = "Decile-chart")
+text(midpoints, heights+0.5, labels=round(heights, 1), cex = 0.8)
