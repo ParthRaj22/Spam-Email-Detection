@@ -25,3 +25,12 @@ avg.spammail.no <- colMeans(spammail.no[1:57])
 #Difference between Averages of Spams and non Spams
 diff_average <- abs(avg.spammail.yes - avg.spammail.no)
 diff_average
+
+#10 Predictors with highest difference between Spam class and non spam class average
+max_diff <- sort.list(diff_average, decreasing = TRUE)
+head(max_diff,10)
+
+# Predictors at columns 57,56,55,27,19,21,25,16,26,52 are the highest in terms of difference between
+#their spams and respective non spam columns
+
+highest_10 <- spammail.df[,c(57,56,55,27,19,21,25,16,26,52,58)]
