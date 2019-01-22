@@ -34,3 +34,17 @@ head(max_diff,10)
 #their spams and respective non spam columns
 
 highest_10 <- spammail.df[,c(57,56,55,27,19,21,25,16,26,52,58)]
+
+set.seed(1)
+
+#Partitioning data into training (80%) and validation(20%)
+train.index <- createDataPartition(highest_10$Spam, p= 0.8, list = FALSE)
+train.df <- highest_10[train.index,]
+valid.df <- highest_10[-train.index,]
+
+#Linear discriminant analysis on training data
+spam.lda <- lda(Spam~., data = train.df, scale=T)
+
+#Linear discriminant analysis on validation data
+pred <- predict(spam.lda, valid.df, type="response")
+summary(pred)
