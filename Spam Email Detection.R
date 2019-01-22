@@ -48,3 +48,9 @@ spam.lda <- lda(Spam~., data = train.df, scale=T)
 #Linear discriminant analysis on validation data
 pred <- predict(spam.lda, valid.df, type="response")
 summary(pred)
+
+#Accuracy - confusion matrix
+
+table(Predicted = pred$class, Actual = valid.df$Spam)
+mean(pred$class==valid.df$Spam)
+
